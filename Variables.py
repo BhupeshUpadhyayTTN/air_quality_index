@@ -24,13 +24,13 @@ local_database = {
 }
 
 # AWS credentials
-access_key = "AKIA5YUAV4T2HCRRW33P"
-secret_key = "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"
+access_key = "AKIA5YUAV4T2F4N64L5W"
+secret_key = "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"
 s3_output_location = 's3a://bhupeshbucket123/export/'
 
 aws_variables ={
-    'access_key': "AKIA5YUAV4T2HCRRW33P",
-    'secret_key': "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",
+    'access_key': "AKIA5YUAV4T2F4N64L5W",
+    'secret_key': "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",
     'spark': {
         'spark_output_location': 's3a://bhupeshbucket123/export/'
     },

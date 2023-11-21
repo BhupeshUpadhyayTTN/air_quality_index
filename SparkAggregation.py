@@ -5,12 +5,11 @@ from Variables import *
 
 def sparkCode():
     spark = SparkSession.builder \
-            .config("spark.jars", "jars/aws-java-sdk-bundle-1.11.375.jar,jars/hadoop-aws-3.3.1.jar,jars/mysql-connector-java-8.0.13.jar") \
+            .config("spark.jars", "/home/bhupesh/Desktop/air_quality_index/jars/aws-java-sdk-bundle-1.11.375.jar,/home/bhupesh/Desktop/air_quality_index/jars/hadoop-aws-3.3.1.jar,/home/bhupesh/Desktop/air_quality_index/jars/mysql-connector-java-8.0.13.jar") \
             .config("spark.hadoop.fs.s3a.access.key",access_key )\
             .config("spark.hadoop.fs.s3a.secret.key",secret_key )\
             .getOrCreate()
     # spark.conf.set("spark.hadoop.metrics.ignoreConfigFiles", "true")
-
     df = spark.read \
     .format("jdbc") \
     .option("driver","com.mysql.cj.jdbc.Driver") \
