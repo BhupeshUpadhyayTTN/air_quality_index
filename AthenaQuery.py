@@ -59,10 +59,10 @@ def athena_query():
     partition_load_query = f"MSCK REPAIR TABLE {database_info['databaseName']}.{database_info['table']}"
 
     #Top 3 day wise most polluted city
-    day_wise_most_polluted_city = f"""SELECT distinct(city) FROM (SELECT *, dense_rank() OVER(PARTITION BY 'day' ORDER BY 'average_pollutant_level') AS dense_ranking FROM {database_info['databaseName']}.{database_info['table']}) AS subquery WHERE dense_ranking < 6;"""
+    day_wise_most_polluted_city = f"""SELECT distinct(city) FROM (SELECT *, dense_rank() OVER(PARTITION BY day ORDER BY average_pollutant_level) AS dense_ranking FROM {database_info['databaseName']}.{database_info['table']}) AS subquery WHERE dense_ranking < 6;"""
     
     #Top 3 day wise most polluted state
-    day_wise_most_polluted_state = f"""SELECT distinct(state) FROM (SELECT *, dense_rank() OVER(PARTITION BY 'day' ORDER BY 'average_pollutant_level') AS dense_ranking FROM {database_info['databaseName']}.{database_info['table']}) AS subquery WHERE dense_ranking < 6;"""
+    day_wise_most_polluted_state = f"""SELECT distinct(state) FROM (SELECT *, dense_rank() OVER(PARTITION BY day ORDER BY average_pollutant_level) AS dense_ranking FROM {database_info['databaseName']}.{database_info['table']}) AS subquery WHERE dense_ranking < 6;"""
 
     query_execute(create_table_query, partition_load_query, day_wise_most_polluted_city, day_wise_most_polluted_state)
 

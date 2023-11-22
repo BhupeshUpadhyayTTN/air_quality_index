@@ -27,7 +27,7 @@ def sparkCode():
     result_df = result_df.withColumn("avg_min", avg("pollutant_min").over(window_spec))
     result_df = result_df.withColumn("avg_max", avg("pollutant_max").over(window_spec))
     result_df = result_df.withColumn("avg_avg", avg("pollutant_avg").over(window_spec))
-    result_df = result_df.withColumn("average_pollutant_level", (col("avg_min") + col("avg_max")) / 5)
+    result_df = result_df.withColumn("average_pollutant_level", (col("avg_min") + col("avg_max")) / 6)
 
     df2=result_df.select("id", "country", "state", "city", "station", "last_update", "pollutant_id", "day", "average_pollutant_level")
 
